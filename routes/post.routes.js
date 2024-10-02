@@ -13,6 +13,7 @@ const router = express.Router();
 // API endpoint structure
 router.get("/", postController.getAllPublishedPosts);
 router.get("/:postId", postController.getSinglePublishedPost);
+router.post("/", authController.authenticate, postController.createAPost); // protected route
 router.put("/:postId", authController.authenticate, postController.updateAPost); // protected route
 router.delete(
   "/:postId",
