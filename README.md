@@ -18,6 +18,8 @@ create `.env` file in the root folder and place this inside (replace with your o
 ```js
 MONGODB_URL=mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority
 PORT=8080
+JWT_SECRET=yourfavoritecolor
+JWT_EXPIRES_IN=3600
 ```
 
 ## Run the backend
