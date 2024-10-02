@@ -1,5 +1,9 @@
 # Personal Blog API
 
+Done to complete the first project in [this list](https://roadmap.sh/backend/project-ideas)
+
+Followed the guidance of [this post](https://chinwendu.medium.com/how-to-build-a-restful-blog-api-with-nodejs-express-and-mongodb-24a889dec33)
+
 ## Dependencies
 
 - Node 20+
