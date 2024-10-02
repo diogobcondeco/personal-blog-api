@@ -1,6 +1,6 @@
 // import the Post model object
-const Post = require('./../model/Post.model');
-const User = require('./../model/User.model');
+const Post = require('../models/Post.model');
+const User = require('../models/User.model');
 
 // get posts (all published posts)
 exports.getAllPublishedPosts = async (req, res) => {
