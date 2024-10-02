@@ -84,4 +84,33 @@ exports.createAPost = async (req, res) => {
 }
 
 // update a post
+exports.updateAPost = async (req, res) => {
+  const { state, body } = req.body;
+
+  try {
+    const post = await Post.findByIdAndUpdate(
+      req.params.postId,
+      {
+        $set: { state, body },
+      },
+      { new: true }
+    );
+
+    // check if post belongs to the user initiating the request
+    if (post.authorId.toString() !== req.user._id) {
+      return res.status(401).json({
+        status: 'Fail',
+        message: `You can only update a post you created!`
+      })
+    }
+
+    res.status(200).json({
+      status: 'success',
+      post
+    });
+  } catch (error) {
+    throw error;
+  }
+}
+
 // delete a post
