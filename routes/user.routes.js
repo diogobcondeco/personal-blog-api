@@ -1,20 +1,20 @@
 // import express
-import { Router } from "express";
+const express = require("express");
 
 // import user controller
-import { getAllPosts } from "./../controller/user.controller";
+const userController = require("./../controllers/user.controller");
 
 // import authentication middleware
-import { authenticate, signup, login } from "./../auth/auth";
+const authController = require("./../auth/user.auth");
 
 // create router
-const router = Router();
+const router = express.Router();
 
 // API endpoint for an author
-router.get("/author", authenticate, getAllPosts);
+router.get("/author", authController.authenticate, userController.getAllPosts);
 
 // API endpoint for signup and login
-router.post("/auth/signup", signup);
-router.post("/auth/login", login);
+router.post("/auth/signup", authController.signup);
+router.post("/auth/login", authController.login);
 
-export default router;
+module.exports = router;

@@ -1,24 +1,23 @@
 // import express
-import { Router } from "express";
+const express = require("express");
 
 // import Post controller
-import postController, {
-  getAllPublishedPosts,
-  getSinglePublishedPost,
-  updateAPost,
-  deleteAPost,
-} from "./../controller/post.controller";
+const postController = require("./../controllers/post.controller");
 
 // import authentication middleware
-import { authenticate } from "./../auth/auth";
+const authController = require("./../auth/user.auth");
 
 // create router
-const router = Router();
+const router = express.Router();
 
 // API endpoint structure
-router.get("/", getAllPublishedPosts);
-router.get("/:postId", postController, getSinglePublishedPost);
-router.put("/:postId", authenticate, updateAPost); // protected route
-router.delete("/:postId", authenticate, deleteAPost); // protected route
+router.get("/", postController.getAllPublishedPosts);
+router.get("/:postId", postController.getSinglePublishedPost);
+router.put("/:postId", authController.authenticate, postController.updateAPost); // protected route
+router.delete(
+  "/:postId",
+  authController.authenticate,
+  postController.deleteAPost
+); // protected route
 
-export default router;
+module.exports = router;
