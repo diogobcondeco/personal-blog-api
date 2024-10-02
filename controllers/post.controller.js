@@ -97,11 +97,11 @@ exports.updateAPost = async (req, res) => {
     );
 
     // check if post belongs to the user initiating the request
-    if (post.authorId.toString() !== req.user._id) {
+    if (post.authorId.toString() !== req.user._id.toString()) {
       return res.status(401).json({
-        status: 'Fail',
-        message: `You can only update a post you created!`
-      })
+        status: "Fail",
+        message: `You can only update a post you created!`,
+      });
     }
 
     res.status(200).json({
